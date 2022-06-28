@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,28 +65,48 @@
             <objects>
                 <viewController id="ZTC-pz-o1y" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u63-K2-gxa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="hiT-qg-Qq2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile_tab" id="SKT-TT-fek"/>
+                    <navigationItem key="navigationItem" title="Profile" id="Kys-aj-Lm8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sdi-SQ-NDG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.6521739130437" y="823.66071428571422"/>
+            <point key="canvasLocation" x="2805.7971014492755" y="823.66071428571422"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Feed View Controller-->
         <scene sceneID="6jE-g0-3Oy">
             <objects>
-                <viewController id="ZTB-0G-eOv" sceneMemberID="viewController">
+                <viewController id="ZTB-0G-eOv" customClass="HomeFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWw-SM-L30">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="2qv-tV-7n9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2G9-SZ-LeF"/>
+                    <navigationItem key="navigationItem" id="2G9-SZ-LeF">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="gn6-pZ-VZz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="yhZ-aM-cPZ">
+                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="ZTB-0G-eOv" eventType="touchUpInside" id="Iex-JQ-sjd"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" style="plain" id="FL7-pj-Rr7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8bN-aP-QbO">
+                                <rect key="frame" x="302" y="2.5" width="92" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="insta_camera_btn"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9AK-vy-hNB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,7 +115,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="KE2-mO-PDb">
             <objects>
-                <tabBarController id="OcN-vl-dg7" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTabController" modalPresentationStyle="fullScreen" id="OcN-vl-dg7" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pvl-ra-deO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -103,21 +123,21 @@
                     </tabBar>
                     <connections>
                         <segue destination="YKS-AE-3Yh" kind="relationship" relationship="viewControllers" id="1z0-Be-CTN"/>
-                        <segue destination="ZTC-pz-o1y" kind="relationship" relationship="viewControllers" id="x49-x4-2Lh"/>
+                        <segue destination="7Fh-VU-5h9" kind="relationship" relationship="viewControllers" id="x49-x4-2Lh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKN-9G-nBy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-142" y="-218"/>
         </scene>
-        <!--Feed-->
+        <!--Item 1-->
         <scene sceneID="O9u-uc-aq2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YKS-AE-3Yh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="feed_tab" id="uBm-w2-M17"/>
+                    <tabBarItem key="tabBarItem" title="Item 1" selectedImage="feed_tab" id="uBm-w2-M17"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0fB-1T-1ig">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -129,9 +149,29 @@
             </objects>
             <point key="canvasLocation" x="-1028" y="514"/>
         </scene>
+        <!--Item 2-->
+        <scene sceneID="CM5-Lb-1Pb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Fh-VU-5h9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 2" selectedImage="profile_tab" id="SKT-TT-fek"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="syz-6j-7t7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZTC-pz-o1y" kind="relationship" relationship="rootViewController" id="7vF-e8-ZFo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4bk-ZX-XxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895.6521739130437" y="823.66071428571422"/>
+        </scene>
     </scenes>
     <resources>
         <image name="feed_tab" width="25" height="25"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
