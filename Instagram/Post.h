@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (Post*) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
+
 @end
 
 NS_ASSUME_NONNULL_END

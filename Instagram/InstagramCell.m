@@ -34,6 +34,14 @@
     self.usernameLabel.text = self.post.author.username;
     NSDate *date = self.post.createdAt;
     self.timeStampLabel.text = [date shortTimeAgoSinceNow];
+    
+    PFFileObject *profileImageFile = self.post.author[@"profilePicture"];
+    [profileImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            self.profileImageView.image = [UIImage imageWithData:imageData];
+        }
+    }];
+
 }
 
 @end
