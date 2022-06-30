@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ComposePostViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, weak) id<ComposePostViewControllerDelegate> composeDelegate;
+- (IBAction)didTapPhoto:(UITapGestureRecognizer *)sender;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END
