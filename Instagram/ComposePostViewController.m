@@ -37,7 +37,6 @@
 }
 
 
-
 - (IBAction)didTapShare:(id)sender {
     Post *post = [Post postUserImage:self.postImage.image withCaption:self.captionField.text withCompletion: ^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {

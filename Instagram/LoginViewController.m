@@ -58,7 +58,7 @@
         // create a cancel action
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle cancel response here. Doing nothing will dismiss the view.
+                                                             // handle cancel response here. 
                                                              }];
         [alert addAction:cancelAction];  // add the cancel action to the alertController
         // create an OK action
@@ -81,7 +81,7 @@
         // create a cancel action
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle cancel response here. Doing nothing will dismiss the view.
+                                                             // handle cancel response here.
                                                              }];
         [alert addAction:cancelAction];  // add the cancel action to the alertController
         // create an OK action

@@ -17,8 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     PFUser *user = [PFUser currentUser];
     user[@"profilePicture"] = [self getPFFileFromImage:self.profilePicture.image];
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
