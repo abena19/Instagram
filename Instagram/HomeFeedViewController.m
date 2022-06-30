@@ -10,21 +10,26 @@
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
 #import "ComposePostViewController.h"
+#import "SVPullToRefresh.h"
 #import "InstagramCell.h"
 #import <Parse/Parse.h>
 #import "Post.h"
 #import "DateTools.h"
 
 
-@interface HomeFeedViewController () <UITableViewDataSource, ComposePostViewControllerDelegate>
+@interface HomeFeedViewController () <UITableViewDataSource, ComposePostViewControllerDelegate, UIScrollViewDelegate>
 
 - (IBAction)didTapLogout:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *homeFeedTableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
 @implementation HomeFeedViewController
+
+NSString *HeaderViewIdentifier = @"TableViewHeaderView";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,17 +61,8 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     InstagramCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InstagramCell"];
     Post *post = self.postArray[indexPath.row];
-    // convert pffile object to image
-    PFFileObject *postImageFile = post.image;
-    [postImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            cell.postImageView.image = [UIImage imageWithData:imageData];
-        }
-    }];
-    cell.captionTextView.text = post.caption;
-    cell.usernameLabel.text = post.author.username;
-    NSDate *date = post.createdAt;
-    cell.timeStampLabel.text = [date shortTimeAgoSinceNow];
+    cell.post = post;
+    [cell setPost];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
     NSLog(@"%@", self.postArray);

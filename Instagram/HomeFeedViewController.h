@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ComposePostViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeFeedViewController : UIViewController
+@interface HomeFeedViewController : UIViewController <UITableViewDataSource, ComposePostViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *postArray;
 
