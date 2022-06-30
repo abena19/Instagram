@@ -22,10 +22,6 @@
 }
 
 
-- (IBAction)didTapUserProfileAction:(id)sender {
-    [self.delegate instagramCell:self didTapUserProfile:self.post.author];
-}
-
 - (void)setPost {
     // convert pffile object to image
     PFFileObject *postImageFile = self.post.image;

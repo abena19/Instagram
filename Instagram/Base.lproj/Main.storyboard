@@ -162,9 +162,6 @@
                                                                 <constraint firstAttribute="height" constant="25" id="9KZ-5y-kPx"/>
                                                                 <constraint firstAttribute="width" constant="25" id="Pu5-wS-nIk"/>
                                                             </constraints>
-                                                            <connections>
-                                                                <outletCollection property="gestureRecognizers" destination="CkM-bY-g77" appends="YES" id="WCO-Zu-z5a"/>
-                                                            </connections>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cke-Yh-sqL">
                                                             <rect key="frame" x="41" y="0.0" width="109" height="25"/>
@@ -200,7 +197,7 @@
                                         <connections>
                                             <outlet property="captionTextView" destination="Uor-ub-Fi9" id="NM5-Nt-hlS"/>
                                             <outlet property="postImageView" destination="OST-m2-J6n" id="qUb-Ez-LUP"/>
-                                            <outlet property="profileImageView" destination="QNl-Em-DrK" id="Loy-jP-S7Y"/>
+                                            <outlet property="profileImageView" destination="QNl-Em-DrK" id="rx3-Qu-wq5"/>
                                             <outlet property="timeStampLabel" destination="p3j-Ou-Vmj" id="CId-Ui-eGt"/>
                                             <outlet property="usernameLabel" destination="cke-Yh-sqL" id="Ko4-zI-qpk"/>
                                             <segue destination="1lU-jG-qF5" kind="show" identifier="detailSegue" id="vqv-sl-z5I"/>
@@ -247,7 +244,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9AK-vy-hNB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="CkM-bY-g77" userLabel="Profile Tap Gesture Recognizer"/>
             </objects>
             <point key="canvasLocation" x="-142.02898550724638" y="513.61607142857144"/>
         </scene>
@@ -343,25 +339,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="lxt-vI-qdf">
-                                <rect key="frame" x="20" y="56" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="lxt-vI-qdf">
+                                <rect key="frame" x="8" y="64" width="128" height="128"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="PXO-HN-hCV"/>
+                                    <constraint firstAttribute="height" constant="128" id="qM0-QT-ge7"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="7WK-l2-OXt" appends="YES" id="HDj-PN-Qft"/>
                                 </connections>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Caption stuff" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dJR-bO-Tcy">
-                                <rect key="frame" x="156" y="56" width="240" height="128"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gVj-k2-TBG">
+                                <rect key="frame" x="144" y="64" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dRN-Hn-ABl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lxt-vI-qdf" firstAttribute="top" secondItem="dRN-Hn-ABl" secondAttribute="top" constant="8" id="3dc-qi-lWW"/>
+                            <constraint firstItem="lxt-vI-qdf" firstAttribute="leading" secondItem="dRN-Hn-ABl" secondAttribute="leading" constant="8" id="q13-DC-mtD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w5o-sD-SzG">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="08g-Yg-yWw">
@@ -388,7 +389,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="captionView" destination="dJR-bO-Tcy" id="X6h-qD-tvH"/>
                         <outlet property="postImage" destination="lxt-vI-qdf" id="jl3-6k-4Ur"/>
                     </connections>
                 </viewController>
@@ -419,7 +419,7 @@
         <scene sceneID="O9u-uc-aq2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YKS-AE-3Yh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="feed_tab" id="uBm-w2-M17"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" selectedImage="feed_tab" id="uBm-w2-M17"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0fB-1T-1ig">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -438,7 +438,7 @@
         <scene sceneID="CM5-Lb-1Pb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Fh-VU-5h9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile_tab" id="SKT-TT-fek"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" selectedImage="profile_tab" id="SKT-TT-fek"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="syz-6j-7t7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

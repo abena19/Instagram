@@ -17,7 +17,7 @@
 #import "DateTools.h"
 
 
-@interface HomeFeedViewController () <UITableViewDataSource, ComposePostViewControllerDelegate, UIScrollViewDelegate>
+@interface HomeFeedViewController () <UITableViewDataSource, UITableViewDelegate, ComposePostViewControllerDelegate, UIScrollViewDelegate>
 
 - (IBAction)didTapLogout:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *homeFeedTableView;
@@ -28,12 +28,11 @@
 
 @implementation HomeFeedViewController
 
-NSString *HeaderViewIdentifier = @"TableViewHeaderView";
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isMoreDataLoading = true;
     self.homeFeedTableView.dataSource = self;
+    self.homeFeedTableView.delegate = self;
     [self.homeFeedTableView reloadData];
     self.homeFeedTableView.rowHeight = UITableViewAutomaticDimension;
     //implementing refresh feature
@@ -96,6 +95,7 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
        UINavigationController *navigationController = [segue destinationViewController];
        ComposePostViewController *composeController = (ComposePostViewController*)navigationController.topViewController;
        composeController.composeDelegate = self;
+       NSLog(@"Successfully moved to compose controller");
    }
 }
 
@@ -116,6 +116,34 @@ NSString *HeaderViewIdentifier = @"TableViewHeaderView";
         }
         }];
 }
+
+
+-(void)loadMoreData:(int) count {
+    PFQuery *postQuery = [Post query];  // construct PFQuery
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = count;
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {   // fetch data asynchronously
+        if (posts) {
+            NSLog(@"😎😎😎 Successfully refreshed home feed");
+            self.postArray = [NSMutableArray arrayWithArray:(NSArray*)posts];
+            // Update flag
+            self.isMoreDataLoading = NO;
+            [self.homeFeedTableView reloadData];  // Reload the tableView now that there is new data
+            self.isMoreDataLoading = YES;
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
+}
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.isMoreDataLoading && indexPath.row + 1 == [self.postArray count]){
+        [self loadMoreData:((int)[self.postArray count] + 5)];
+    }
+}
+
 
 
 - (IBAction)didTapLogout:(id)sender {

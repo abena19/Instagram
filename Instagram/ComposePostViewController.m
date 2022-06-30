@@ -15,7 +15,7 @@
 @interface ComposePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
-@property (weak, nonatomic) IBOutlet UITextView *captionView;
+@property (weak, nonatomic) IBOutlet UITextField *captionField;
 
 - (IBAction)didtapCancel:(id)sender;
 - (IBAction)didTapShare:(id)sender;
@@ -64,11 +64,11 @@
 
 
 - (IBAction)didTapShare:(id)sender {
-    Post *post = [Post postUserImage:self.postImage.image withCaption:self.captionView.text withCompletion: ^(BOOL succeeded, NSError * _Nullable error) {
+    Post *post = [Post postUserImage:self.postImage.image withCaption:self.captionField.text withCompletion: ^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
              NSLog(@"Error posting: %@", error.localizedDescription);
         } else {
-            NSLog(@"Successfully posted the following caption: %@", self.captionView.text);
+            NSLog(@"Successfully posted the following caption: %@", self.captionField.text);
         }
     }];
     [self.composeDelegate didPost:post];

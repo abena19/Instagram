@@ -23,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<InstagramCellDelegate> delegate;
 @property (strong, nonatomic) Post *post;
 
-- (IBAction)didTapUserProfileAction:(id)sender;
 - (void)setPost;
 
 @end
