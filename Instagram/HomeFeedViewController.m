@@ -140,7 +140,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.isMoreDataLoading && indexPath.row + 1 == [self.postArray count]){
-        [self loadMoreData:((int)[self.postArray count] + 5)];
+        [self loadMoreData:((int)[self.postArray count] + 20)];
     }
 }
 
